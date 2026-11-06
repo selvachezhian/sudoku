@@ -1,0 +1,21 @@
+[package]
+name = "sudoku"
+version = "0.1.0"
+edition = "2024"
+description = "A beautiful, cross-platform Sudoku desktop app written in Rust"
+
+[dependencies]
+eframe = { version = "0.31", default-features = false, features = ["default_fonts", "glow", "wayland", "x11", "accesskit"] }
+rusqlite = { version = "0.32", features = ["bundled"] }
+rand = "0.8"
+chrono = { version = "0.4.38", default-features = false, features = ["clock", "std"] }
+directories = "5"
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+codegen-units = 1
+strip = true
+
+[profile.dev.package."*"]
+opt-level = 2
